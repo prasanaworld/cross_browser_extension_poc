@@ -1,0 +1,18 @@
+{
+    "extends": [
+      "airbnb"
+    ],
+    "plugins": [
+      "react",
+      "jsx-a11y",
+      "import",
+      "immutable"
+    ],
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true,  
+      "webextensions": true
+    }
+  }
+  

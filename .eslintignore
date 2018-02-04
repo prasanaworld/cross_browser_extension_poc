@@ -1,0 +1,7 @@
+config
+node_modules
+package.json
+webpack.config.js
+karma.conf.js
+/**/*.manifest.js
+dist
