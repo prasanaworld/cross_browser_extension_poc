@@ -1,0 +1,106 @@
+{
+  "manifest_version": 2,
+  "name": "extension_name_will_be_replaced",
+  "description": "extension_description_Will_be_replace",
+  "version": "extension_description_version_be_replace",
+  "version_name":"extension_description_version_name_be_replace",
+  "browser_action": {
+    "default_icon": {
+      "16": "content/images/ic-extension-off.png",
+      "38": "content/images/ic-extension-off@2x.png",
+      "54": "content/images/ic-extension-off@3x.png"
+    },
+    "default_title": "Norton Identity Safe",
+    "default_popup": "content/ui/popup.html"
+  },
+  "default_locale": "en",
+  "icons": {
+    "16": "content/images/idsafe-logo-16.png",
+    "48": "content/images/idsafe-logo-48.png",
+    "128": "content/images/idsafe-logo-128.png"
+  },
+  "permissions": [
+    "tabs",
+    "background",
+    "webNavigation",
+    "activeTab",
+    "storage",
+    "<all_urls>",
+    "cookies",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "clipboardWrite"
+  ],
+
+  "author" : "testing app",
+
+  "background": {
+    "page": "global.html",
+	  "persistent": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+          "content/SymBfwCS.js",
+          "content/SymO2CS.js",
+          "content/SymWaxCS.js",
+          "content/IDSUIConstants.js",
+          "content/IDSConstants.js",
+          "content/IDSEventUITelemetryWrapper.js",
+          "content/IDSPopup.js",
+          "content/IDSSettingsProxy.js",
+          "content/IDSUIPageViewTelemetryWrapper.js",
+          "content/IDSTelemetryWrapper.js",
+          "content/IDSFormHandler.js",
+          "content/IDSWAX.js",
+          "content/IDSMessageListener.js",
+          "content/IDSPostMessage.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+          "content/libs/uri.min.js",
+          "content/BfwNotificationCenterProxy.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://*.norton.com/*"],
+      "js": [
+        "content/IDSPortal.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://##CCT_URL##.norton.com/*"],
+      "js": [
+        "content/SymBfwCS.js",
+        "content/IDSConstants.js",
+        "content/IDSBridgeEvents.js",
+        "content/IDSLoader.js",
+        "content/IDSCCTListener.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    "content/ui/popup-in-page.html",
+    "content/ui/content-page.css",
+    "content/ui/vault-unlock.html",
+    "content/ui/modal.html",
+    "content/ui/notification.html",
+    "content/images/ic-field-logo.svg",
+    "content/images/spinner-blue.gif",
+    "content/ui/xidsafe-logging-inprogress.html"
+  ]
+
+}
