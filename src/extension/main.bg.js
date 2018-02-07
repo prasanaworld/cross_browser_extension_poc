@@ -4,9 +4,9 @@ import Core from './core/core.util.big';
 import SecurityDashboard from './security-dashboard/security-dashboar.bg';
 
 
-common();
+console.log(common);
 commonUtil();
-Core();
-SecurityDashboard();
+new Core();
+new SecurityDashboard();
 
 

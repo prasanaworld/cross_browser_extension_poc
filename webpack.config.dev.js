@@ -53,13 +53,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin(),
-
         new HtmlPlugin({
             filename: 'background.html',
-            chunks: [ 'vendor', 'common', 'background' ],
-            inject: 'head',
-            title: 'Background'
+            title: "background page",
+            excludeChunks: ['content'],
+            inject: 'head'
         }),
 
         new HappyPack({
@@ -68,7 +66,20 @@ module.exports = {
             loaders: ['babel-loader'],
             verbose: true,
             debug: true,
-        })
+        }),
+
+        // new webpack.LoaderOptionsPlugin({
+        //     minimize: true,
+        //     debug: false,
+        // }),
+
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //       screw_ie8: true,
+        //       warnings: false,
+        //     },
+        //     sourceMap: true,
+        // })
 
     ]
 };
