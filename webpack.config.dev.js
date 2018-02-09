@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const defaults = require('./config/defaults');
 const config = require('./config/configuration');
@@ -50,6 +51,10 @@ module.exports = {
                 cacheDirectory: true
               }
             },
+            {
+                test: /.css$/,
+                loaders: ['style-loader','css-loader'],
+              },
         ]
     },
     plugins: [
